@@ -13,7 +13,10 @@ var calculator = new WorkTimeCalculator(MySchedule, MyHolidays);
 
 Then call the `CalculateWorkTime` function
 ```C#
-TimeSpan result = calculator.CalculateWorkTime(new DateTime(2021, 6, 1, 10, 30, 0), new DateTime(2021, 6, 10, 15, 30, 0));
+TimeSpan result = calculator.CalculateWorkTime(
+  new DateTime(2021, 6, 1, 10, 30, 0), 
+  new DateTime(2021, 6, 10, 15, 30, 0)
+);
 ```
 
 *Work Schedule Configuration Example*
