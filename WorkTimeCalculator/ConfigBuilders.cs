@@ -34,9 +34,9 @@ namespace WorkTimeCalculatorLib {
 				}
 				totalWeekTime += totalDay;
 				stats.Add(day.Key, new DayWorkStatistics() { TotalHours = totalDay, WorkHoursBounds = dayBounds });
+				if(totalDay.TotalSeconds>0)
+					shifts.Add(day.Key, day.Value);
 			}
-
-			shifts = shiftsConfig;
 		}
 
 		/// <summary>
