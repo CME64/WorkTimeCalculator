@@ -63,6 +63,7 @@ List<HolidayConfig> MyHolidays = new List<HolidayConfig>() {
 ## Notes
 - The returned type is `TimeSpan` so the user can extract the value in any time format as needed (hours, minutes, seconds ...etc)
 - The accuracy of the calculated time is in seconds
+- Holidays date configuration is all inclusive of the full days
 - If a day was not configured in the schedule or it has no shifts (or shifts total time value is 0) then it is a non working day
 - Configuration is not checked for validity and it is the responsilbility of the developer, if there are intersections between shifts or holidays it can lead to wrong results
 - The performance of this utility is almost `O(n*k)` where `n` is the maximum number of shifts per day, and `k` is the number of holidays within a single period
