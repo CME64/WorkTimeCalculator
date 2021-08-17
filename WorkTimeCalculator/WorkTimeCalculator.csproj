@@ -1,7 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp2.2;netcoreapp2.0;net45;net461;netstandard1.0</TargetFrameworks>
+    <Authors>Mohammed Alsayed</Authors>
+    <Company>Majorel</Company>
+    <RepositoryUrl>https://github.com/CME64/WorkTimeCalculator</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <Description>A utility library to calculate work time within a period, with a configurable work schedule, multiple shifts and holidays
+
+Time complexity: O(n*k) where n is the maximum number of shifts per day, and k is the number of holidays within a single period</Description>
+    <Copyright>Copyright (c) 2021 Mohammed Alsayed</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <RootNamespace>WorkTimeCalculatorLib</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

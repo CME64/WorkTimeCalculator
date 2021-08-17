@@ -77,6 +77,8 @@ namespace WorkTimeCalculatorLib {
 		/// <param name="end">end of period datetime</param>
 		/// <returns>total holiday workhours timespan</returns>
 		private TimeSpan CalculateHolidaysWorkTime(DateTime start, DateTime end) {
+			if (Holidays.Count == 0) return new TimeSpan();
+
 			var holidaysWithin = Holidays.Where(h => h.Start.Date.CompareTo(start.Date) >= 0 && h.End.Date.CompareTo(end.Date) <= 0);
 			var borderStartHolidays = Holidays.Where(h => h.Start.Date.CompareTo(start.Date) < 0 && h.End.Date.CompareTo(start.Date) >= 0 && h.End.Date.CompareTo(end.Date) < 0);
 			var borderEndHolidays = Holidays.Where(h => h.Start.Date.CompareTo(end.Date) <= 0 && h.Start.Date.CompareTo(start.Date) > 0 && h.End.Date.CompareTo(end.Date) > 0);
@@ -105,7 +107,7 @@ namespace WorkTimeCalculatorLib {
 			if (end.CompareTo(start) <= 0 || calculateHolidays && Holidays.Any(h => h.Start.Date.CompareTo(start.Date) <= 0 && h.End.Date.CompareTo(end.Date) >= 0))
 				return new TimeSpan();
 
-			bool firstDayHoliday = calculateHolidays ? Holidays.Any(d => d.Start.Date.CompareTo(start.Date) <= 0 && d.End.Date.CompareTo(start.Date) >= 0) : false;
+			bool firstDayHoliday = calculateHolidays && Holidays.Any(d => d.Start.Date.CompareTo(start.Date) <= 0 && d.End.Date.CompareTo(start.Date) >= 0);
 
 			//single day
 			if (end.Date.CompareTo(start.Date) == 0) {
@@ -139,7 +141,7 @@ namespace WorkTimeCalculatorLib {
 				}
 			}
 
-			return (totalWeeks * totalWeekTime) + remainingWorkSecs + firstDay + lastDay - totalHolidaysWork;
+			return new TimeSpan(totalWeeks * totalWeekTime.Ticks) + remainingWorkSecs + firstDay + lastDay - totalHolidaysWork;
 		}
 	}
 }

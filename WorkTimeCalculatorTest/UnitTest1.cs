@@ -123,5 +123,11 @@ namespace WorkTimeCalculatorTest {
 			var time = calc.CalculateWorkTime(new DateTime(2021, 6, 1, 0, 0, 0), new DateTime(2021, 8, 10, 0, 0, 0));
 			Assert.Equal((new TimeSpan(280, 0, 0)).TotalSeconds, time.TotalSeconds);
 		}
+
+		[Fact]
+		public void EqualsHoliday() {
+			var time = calc.CalculateWorkTime(new DateTime(2021, 6, 2, 0, 0, 0), new DateTime(2021, 6, 8, 0, 0, 0));
+			Assert.Equal((new TimeSpan(0, 0, 0)).TotalSeconds, time.TotalSeconds);
+		}
 	}
 }
