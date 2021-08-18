@@ -5,6 +5,11 @@ A utility library to calculate work time within a period, with a configurable wo
 ## Support
 This project is built using C# .Net Core 3.1 class library but it can be ported and compiled with C# .Net
 
+The package is available for multiple frameworks as a NuGet on [NuGet.org](https://www.nuget.org/packages/WorkTimeCalculator) and you can also use the following *Package Manager* command to add it to your project
+```
+Install-Package WorkTimeCalculator
+```
+
 ## How To Use
 After importing the library in the dependencies of your project, create an instance of the calculator with the work schedule and holidays configuration
 ```C#
