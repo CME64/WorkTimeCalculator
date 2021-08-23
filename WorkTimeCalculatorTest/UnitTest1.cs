@@ -6,7 +6,7 @@ using WorkTimeCalculatorLib.Models;
 
 namespace WorkTimeCalculatorTest {
     public class UnitTest1 {
-        WorkTimeCalculator calc;
+        readonly WorkTimeCalculator calc;
 		public UnitTest1() {
 			Dictionary<DayOfWeek, List<WorkShift>> DayShifts = new Dictionary<DayOfWeek, List<WorkShift>>() {
 				{ DayOfWeek.Sunday, new List<WorkShift>(){
@@ -128,6 +128,12 @@ namespace WorkTimeCalculatorTest {
 		public void EqualsHoliday() {
 			var time = calc.CalculateWorkTime(new DateTime(2021, 6, 2, 0, 0, 0), new DateTime(2021, 6, 8, 0, 0, 0));
 			Assert.Equal((new TimeSpan(0, 0, 0)).TotalSeconds, time.TotalSeconds);
+		}
+
+		[Fact]
+		public void HolidayTwoFollowingDays() {
+			var time = calc.CalculateWorkTime(new DateTime(2021, 6, 8, 0, 0, 0), new DateTime(2021, 6, 9, 10, 0, 0));
+			Assert.Equal((new TimeSpan(1, 0, 0)).TotalSeconds, time.TotalSeconds);
 		}
 	}
 }

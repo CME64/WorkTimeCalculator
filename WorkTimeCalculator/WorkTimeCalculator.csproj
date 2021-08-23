@@ -13,11 +13,24 @@ Time complexity: O(n*k) where n is the maximum number of shifts per day, and k i
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <RootNamespace>WorkTimeCalculatorLib</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>1.0.3</Version>
+    <PackageTags>calculator time schedule holidays business-hours date-range shifts business-time work-time work-hours work-shifts work hours time</PackageTags>
+    <PackageReleaseNotes>Support for multiple frameworks
+Tags added to improve nuget search</PackageReleaseNotes>
+    <PackageIcon>calendar.png</PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\Desktop\LICENSE.txt">
+    <None Include=".\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="calendar.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="LICENSE.txt">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

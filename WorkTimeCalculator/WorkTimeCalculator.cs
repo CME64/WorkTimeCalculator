@@ -117,14 +117,14 @@ namespace WorkTimeCalculatorLib {
 				return CalculatePartialDayWorktime(start.TimeOfDay, end.TimeOfDay, start.DayOfWeek);
 			}
 
-			//bool lastDayHoliday = calculateHolidays ? Holidays.Any(d => d.Start.Date.CompareTo(end.Date) <= 0 && d.End.Date.CompareTo(end.Date) >= 0) : false;
 
 			TimeSpan firstDay = CalculatePartialDayWorktime(start.TimeOfDay, new TimeSpan(24, 0, 0), start.DayOfWeek);
 			TimeSpan lastDay = CalculatePartialDayWorktime(new TimeSpan(), end.TimeOfDay, end.DayOfWeek);
 
 			//following days
 			if (end.Date.Subtract(start.Date).Days == 1) {
-				return firstDay + lastDay;
+				bool lastDayHoliday = calculateHolidays ? Holidays.Any(d => d.Start.Date.CompareTo(end.Date) <= 0 && d.End.Date.CompareTo(end.Date) >= 0) : false;
+				return (firstDayHoliday?new TimeSpan():firstDay) + (lastDayHoliday ? new TimeSpan() : lastDay);
 			}
 
 			int startDay = ((int)start.DayOfWeek + 1) % 7;
