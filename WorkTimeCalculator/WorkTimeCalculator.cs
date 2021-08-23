@@ -11,6 +11,12 @@ namespace WorkTimeCalculatorLib {
 		private Dictionary<DayOfWeek, DayWorkStatistics> DaysWorkStats;
 		private TimeSpan TotalWeekWorkTime = new TimeSpan();
 		private List<Holiday> Holidays = new List<Holiday>();
+
+		/// <summary>
+		/// Creates a configured calculator instance with the provided work schedule and holidays
+		/// </summary>
+		/// <param name="workSchedule">The weekly work schedule</param>
+		/// <param name="holidaysConfig">Holidays list</param>
 		public WorkTimeCalculator(Dictionary<DayOfWeek, List<WorkShift>> workSchedule, List<HolidayConfig> holidaysConfig) {
 			this.SetConfigurations(workSchedule, holidaysConfig);
 		}
@@ -18,20 +24,20 @@ namespace WorkTimeCalculatorLib {
 		/// <summary>
 		/// Will be called by the constructor to initialize configuration. can be used externally to change configuration as well
 		/// </summary>
-		/// <param name="shiftsConfig"></param>
-		/// <param name="holidaysConfig"></param>
+		/// <param name="shiftsConfig">The weekly work schedule</param>
+		/// <param name="holidaysConfig">Holidays list</param>
 		public void SetConfigurations(Dictionary<DayOfWeek, List<WorkShift>> shiftsConfig, List<HolidayConfig> holidaysConfig) {
 			ConfigBuilders.ShiftsConfigBuilder(shiftsConfig, out DayShifts, out DaysWorkStats, out TotalWeekWorkTime);
 			ConfigBuilders.HolidaysConfigBuilder(this, holidaysConfig, out Holidays);
 		}
 
 		/// <summary>
-		/// for internal use to calculate paritial work hours from shifts information in a specific day of week
+		/// For internal use to calculate paritial work hours from shifts information in a specific day of week
 		/// </summary>
-		/// <param name="start">start time</param>
-		/// <param name="end">end time</param>
-		/// <param name="day">day of week</param>
-		/// <returns>total workhours timespan</returns>
+		/// <param name="start">Start time</param>
+		/// <param name="end">End time</param>
+		/// <param name="day">Day of week</param>
+		/// <returns>Total workhours timespan</returns>
 		private TimeSpan CalculatePartialDayWorktime(TimeSpan start, TimeSpan end, DayOfWeek day) {
 			if (!DaysWorkStats.ContainsKey(day) || !DayShifts.ContainsKey(day))
 				return new TimeSpan();
@@ -73,9 +79,9 @@ namespace WorkTimeCalculatorLib {
 		/// <summary>
 		/// Calculate holiday workhours to be subtracted from actual workhours
 		/// </summary>
-		/// <param name="start">start of period datetime</param>
-		/// <param name="end">end of period datetime</param>
-		/// <returns>total holiday workhours timespan</returns>
+		/// <param name="start">Start of period datetime</param>
+		/// <param name="end">End of period datetime</param>
+		/// <returns>Total holiday work hours as a timespan</returns>
 		private TimeSpan CalculateHolidaysWorkTime(DateTime start, DateTime end) {
 			if (Holidays.Count == 0) return new TimeSpan();
 
@@ -98,10 +104,10 @@ namespace WorkTimeCalculatorLib {
 		/// <summary>
 		/// Calculate workhours from datetime to datetime (accuracy is calculated in seconds)
 		/// </summary>
-		/// <param name="start">start of period datetime</param>
-		/// <param name="end">end of period datetime</param>
-		/// <param name="calculateHolidays">exclude holidays [default: true]</param>
-		/// <returns>total workhours timespan</returns>
+		/// <param name="start">Start of period datetime</param>
+		/// <param name="end">End of period datetime</param>
+		/// <param name="calculateHolidays">Ignore holidays configuration [default: true]</param>
+		/// <returns>Total work hours as a timespan</returns>
 		public TimeSpan CalculateWorkTime(DateTime start, DateTime end, bool calculateHolidays = true) {
 			//wrong date range
 			if (end.CompareTo(start) <= 0 || calculateHolidays && Holidays.Any(h => h.Start.Date.CompareTo(start.Date) <= 0 && h.End.Date.CompareTo(end.Date) >= 0))
@@ -116,7 +122,6 @@ namespace WorkTimeCalculatorLib {
 
 				return CalculatePartialDayWorktime(start.TimeOfDay, end.TimeOfDay, start.DayOfWeek);
 			}
-
 
 			TimeSpan firstDay = CalculatePartialDayWorktime(start.TimeOfDay, new TimeSpan(24, 0, 0), start.DayOfWeek);
 			TimeSpan lastDay = CalculatePartialDayWorktime(new TimeSpan(), end.TimeOfDay, end.DayOfWeek);

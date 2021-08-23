@@ -13,12 +13,17 @@ Time complexity: O(n*k) where n is the maximum number of shifts per day, and k i
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <RootNamespace>WorkTimeCalculatorLib</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.3</Version>
-    <PackageTags>calculator time schedule holidays business-hours date-range shifts business-time work-time work-hours work-shifts work hours time</PackageTags>
-    <PackageReleaseNotes>Support for multiple frameworks
-Tags added to improve nuget search</PackageReleaseNotes>
+    <Version>1.0.4.2</Version>
+    <PackageTags>calculator time schedule holidays business-hours date-range shifts business-time work-time work-hours work-shifts work business hours time</PackageTags>
+    <PackageReleaseNotes>Description added to functions (enhanced)</PackageReleaseNotes>
     <PackageIcon>calendar.png</PackageIcon>
     <PackageIconUrl />
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageProjectUrl>https://github.com/CME64/WorkTimeCalculator</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
