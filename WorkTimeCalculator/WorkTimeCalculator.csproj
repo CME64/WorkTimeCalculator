@@ -13,7 +13,7 @@ Time complexity: O(n*k) where n is the maximum number of shifts per day, and k i
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <RootNamespace>WorkTimeCalculatorLib</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.4.2</Version>
+    <Version>1.0.5</Version>
     <PackageTags>calculator time schedule holidays business-hours date-range shifts business-time work-time work-hours work-shifts work business hours time</PackageTags>
     <PackageReleaseNotes>Description added to functions (enhanced)</PackageReleaseNotes>
     <PackageIcon>calendar.png</PackageIcon>

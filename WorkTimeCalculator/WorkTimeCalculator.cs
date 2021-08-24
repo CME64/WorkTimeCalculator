@@ -17,6 +17,7 @@ namespace WorkTimeCalculatorLib {
 		/// </summary>
 		/// <param name="workSchedule">The weekly work schedule</param>
 		/// <param name="holidaysConfig">Holidays list</param>
+		/// <exception cref="ArgumentException">On misconfiguration of holidays, shifts, and empty shifts</exception>
 		public WorkTimeCalculator(Dictionary<DayOfWeek, List<WorkShift>> workSchedule, List<HolidayConfig> holidaysConfig) {
 			this.SetConfigurations(workSchedule, holidaysConfig);
 		}
@@ -26,6 +27,7 @@ namespace WorkTimeCalculatorLib {
 		/// </summary>
 		/// <param name="shiftsConfig">The weekly work schedule</param>
 		/// <param name="holidaysConfig">Holidays list</param>
+		/// <exception cref="ArgumentException">On misconfiguration of holidays, shifts, and empty shifts</exception>
 		public void SetConfigurations(Dictionary<DayOfWeek, List<WorkShift>> shiftsConfig, List<HolidayConfig> holidaysConfig) {
 			ConfigBuilders.ShiftsConfigBuilder(shiftsConfig, out DayShifts, out DaysWorkStats, out TotalWeekWorkTime);
 			ConfigBuilders.HolidaysConfigBuilder(this, holidaysConfig, out Holidays);
@@ -106,7 +108,7 @@ namespace WorkTimeCalculatorLib {
 		/// </summary>
 		/// <param name="start">Start of period datetime</param>
 		/// <param name="end">End of period datetime</param>
-		/// <param name="calculateHolidays">Ignore holidays configuration [default: true]</param>
+		/// <param name="calculateHolidays">Set to false to ignore holidays configuration [default: true]</param>
 		/// <returns>Total work hours as a timespan</returns>
 		public TimeSpan CalculateWorkTime(DateTime start, DateTime end, bool calculateHolidays = true) {
 			//wrong date range

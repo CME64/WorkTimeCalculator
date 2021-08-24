@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using WorkTimeCalculatorLib.Models;
 
 namespace WorkTimeCalculatorTest {
-    public class UnitTest1 {
+    public class CalculationTests {
         readonly WorkTimeCalculator calc;
-		public UnitTest1() {
+		public CalculationTests() {
 			Dictionary<DayOfWeek, List<WorkShift>> DayShifts = new Dictionary<DayOfWeek, List<WorkShift>>() {
 				{ DayOfWeek.Sunday, new List<WorkShift>(){
 					new WorkShift(){ Start = new TimeSpan(9,0,0), End = new TimeSpan(13,0,0)},
