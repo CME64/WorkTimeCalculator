@@ -19,7 +19,7 @@ jobs:
       - name: use this action, test solution dir
         uses: zyborg/dotnet-tests-report@v1
         with:
-          project_path: WorkTimeCalculatorTest
+          project_path: WorkTimeCalculatorTest/WorkTimeCalculatorTest.csproj
           report_name: Unit Tests
           report_title: My Project Tests
           github_token: ${{ secrets.GITHUB_TOKEN }}
