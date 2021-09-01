@@ -1,6 +1,6 @@
 # WorkTimeCalculator 
-![Nuget](https://img.shields.io/nuget/dt/WorkTimeCalculator) 
-![Nuget](https://img.shields.io/nuget/v/WorkTimeCalculator?url=https://www.nuget.org/packages/WorkTimeCalculator&logo=Nuget)
+[![Nuget](https://img.shields.io/nuget/dt/WorkTimeCalculator)](https://www.nuget.org/packages/WorkTimeCalculator)
+[![Nuget](https://img.shields.io/nuget/v/WorkTimeCalculator?logo=Nuget)](https://www.nuget.org/packages/WorkTimeCalculator)
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/CME64/WorkTimeCalculator?include_prereleases)
 ![License](https://img.shields.io/badge/license-LGPL%202.1-blue)
 [![Unit Testing](https://github.com/CME64/WorkTimeCalculator/actions/workflows/tests.yml/badge.svg)](https://github.com/CME64/WorkTimeCalculator/actions/workflows/tests.yml)
