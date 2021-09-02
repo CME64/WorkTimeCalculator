@@ -33,4 +33,5 @@ jobs:
           report_title: Unit Tests Results
           github_token: ${{ secrets.GITHUB_TOKEN }}
           gist_name: unitTestResults.md
+          skip_check_run: true
           gist_badge_label: 'Unit Tests: %Counters_passed%/%Counters_total%'
