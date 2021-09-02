@@ -14,12 +14,23 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
+     - uses: actions/checkout@v2        
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.301
       - name: use this action, test solution dir
+        if: ${{ !cancelled() }} 
         uses: zyborg/dotnet-tests-report@v1
         with:
-          project_path: WorkTimeCalculatorTest/WorkTimeCalculatorTest.csproj
-          report_name: Unit Tests
-          report_title: My Project Tests
+          project_path: WorkTimeCalculatorTest
+          report_name: UnitTestsResults
+          report_title: Unit Tests Results
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          gist_name: unitTestResults.md
+          gist_badge_label: 'Unit Tests: %Counters_passed%/%Counters_total%'
