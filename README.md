@@ -3,7 +3,7 @@
 [![Nuget](https://img.shields.io/nuget/v/WorkTimeCalculator?logo=Nuget)](https://www.nuget.org/packages/WorkTimeCalculator)
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/CME64/WorkTimeCalculator?include_prereleases)
 ![License](https://img.shields.io/badge/license-LGPL%202.1-blue)
-[![Unit Testing](https://github.com/CME64/WorkTimeCalculator/actions/workflows/tests.yml/badge.svg)](https://github.com/CME64/WorkTimeCalculator/actions/workflows/tests.yml)
+[![Unit Testing](https://img.shields.io/badge/Unit%20Tests%3a%2022%2f22-Completed-green)](https://github.com/CME64/WorkTimeCalculator/actions/workflows/tests.yml)
 
 A utility library to calculate work time within a period, with a configurable work schedule and holidays.
 
